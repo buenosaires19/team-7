@@ -1,11 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Inicio from './Components/Inicio'
 
 function App() {
   return (
     <div >
-      
+      <Inicio/>
     </div>
   );
 }
