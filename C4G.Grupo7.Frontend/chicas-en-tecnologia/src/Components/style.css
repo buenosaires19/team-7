@@ -1,0 +1,21 @@
+.Button-flex{
+    
+    justify-content: space-between;
+    display: flex;
+    
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.App-Columns {
+    display: flex; 
+}
+
+
+body .colorBody {
+    background-color: rgb(23, 23, 80);
+}
