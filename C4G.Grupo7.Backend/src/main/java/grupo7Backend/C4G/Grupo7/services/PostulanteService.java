@@ -1,17 +1,21 @@
 package grupo7Backend.C4G.Grupo7.services;
 
 import grupo7Backend.C4G.Grupo7.entities.Evento;
+import grupo7Backend.C4G.Grupo7.entities.Localidad;
 import grupo7Backend.C4G.Grupo7.entities.Postulante;
 import grupo7Backend.C4G.Grupo7.repositories.PostulanteDAO;
 import grupo7Backend.C4G.Grupo7.utils.Buscador;
 import grupo7Backend.C4G.Grupo7.utils.Oficio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,6 +73,28 @@ public class PostulanteService {
 
         return this.postulanteDAO.save(unPostulante);
 
+
+    }
+
+    @EventListener
+    public void initializer(ApplicationReadyEvent event){
+
+        Localidad localidadBuenoAires = new Localidad("Argentina","Buenos Aires", "Merlo");
+        Localidad localidadCordoba = new Localidad("Argentina","Cordoba", "Carlos Paz");
+
+        Postulante postulanteProgramadora = new Postulante("Rosalia","Paz", LocalDate.now(), Oficio.PROGRAMADORA, "Hija de doctor house",
+                localidadBuenoAires,"www.google.com","", "Ofmalmologa");
+
+        Postulante postulanteDoctora = new Postulante("Silvia","Kochen", LocalDate.now(), Oficio.DOCTORA, "Hija de doctor house",
+                localidadCordoba,"www.google.com","", "Ofmalmologa");
+
+        postulanteDAO.save(
+                postulanteDoctora
+			);
+
+        postulanteDAO.save(
+                postulanteProgramadora
+        );
 
     }
 }

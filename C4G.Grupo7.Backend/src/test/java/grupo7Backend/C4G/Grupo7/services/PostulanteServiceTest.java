@@ -7,6 +7,7 @@ import grupo7Backend.C4G.Grupo7.repositories.PostulanteDAO;
 import grupo7Backend.C4G.Grupo7.utils.Buscador;
 import grupo7Backend.C4G.Grupo7.utils.Oficio;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class PostulanteServiceTest {
     @Autowired
     private  PostulanteDAO postulanteDAO;
 
+
+    @Before
+    public void start() {
+        this.postulanteDAO.deleteAll();
+    }
 
     @Test
     public void guardarUnPostulante() {
