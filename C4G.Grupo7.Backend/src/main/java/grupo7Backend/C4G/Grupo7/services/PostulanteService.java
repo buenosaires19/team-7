@@ -5,6 +5,8 @@ import grupo7Backend.C4G.Grupo7.repositories.PostulanteDAO;
 import grupo7Backend.C4G.Grupo7.utils.Oficio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -41,6 +43,11 @@ public class PostulanteService {
 
     public List<Postulante> recuperarTodo() {
         return postulanteDAO.findAll();
+    }
+    public Page<Postulante> recuperarSegunFiltro(Buscador unBuscador) {
+        return this.postulanteDAO.findByLocalidadProvinciaAndOficio(
+                PageRequest.of(unBuscador.getIndex(),unBuscador.getSize()),
+                unBuscador.getProvincia(), unBuscador.getOficio());
     }
 
     public List<Postulante> recuperarSegunFiltro(String provincia, Oficio oficio) {
