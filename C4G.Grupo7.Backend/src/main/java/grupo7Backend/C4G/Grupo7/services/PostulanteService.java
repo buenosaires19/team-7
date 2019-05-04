@@ -29,7 +29,11 @@ public class PostulanteService {
             throw new RuntimeException("No existe postulante");
         }
         return postulante.get();
+    }
 
+    public Postulante editar(Postulante unPostulante) {
+        this.recuperar(unPostulante.getId());
+        return this.postulanteDAO.save(unPostulante);
     }
 
     public List<Postulante> recuperarTodo() {

@@ -14,7 +14,6 @@ import java.util.List;
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class PostulanteController {
 
-
     private final PostulanteService postulanteService;
 
     @Autowired
@@ -30,6 +29,11 @@ public class PostulanteController {
     @GetMapping("/postulantes")
     public List<Postulante> all(){
         return postulanteService.recuperarTodo();
+    }
+
+    @PostMapping("/user/edit")
+    public Postulante editar(@RequestBody @Valid Postulante unPostulante){
+        return postulanteService.editar(unPostulante);
     }
 
 }
