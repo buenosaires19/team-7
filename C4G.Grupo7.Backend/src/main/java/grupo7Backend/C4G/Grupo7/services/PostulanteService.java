@@ -51,9 +51,8 @@ public class PostulanteService {
         return postulanteDAO.findAll();
     }
 
-    public Page<Postulante> recuperarSegunFiltro(Buscador unBuscador) {
+    public List<Postulante> recuperarSegunFiltro(Buscador unBuscador) {
         return this.postulanteDAO.findByLocalidadProvinciaAndOficio(
-                PageRequest.of(unBuscador.getIndex(),unBuscador.getSize()),
                 unBuscador.getProvincia(), unBuscador.getOficio());
     }
 
