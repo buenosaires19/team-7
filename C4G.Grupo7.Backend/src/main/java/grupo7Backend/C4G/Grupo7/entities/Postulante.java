@@ -6,6 +6,7 @@ import grupo7Backend.C4G.Grupo7.utils.Oficio;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,7 +33,7 @@ public class Postulante {
     private int visitas;
 
     @OneToMany(fetch= FetchType.EAGER,cascade = CascadeType.ALL)
-    private List<Evento> eventos;
+    private List<Evento> eventos = new ArrayList<Evento>();
 
     public Postulante(String nombre, String apellido, LocalDate fechaNaciemiento, Oficio oficio,
                       String descripcion, Localidad localidad, String contenido, String foto,
