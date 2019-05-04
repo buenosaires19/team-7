@@ -14,7 +14,7 @@ function App() {
           <Route exact path="/" render={proops => <Inicio {...proops} />} />
           <Route exact path="/postulante" render={proops => <SignUp {...proops} />} />
           <Route exact path="/postulados" render={proops => <ListadoPostulantes {...proops} />} />
-          <Route exact path="/perfil" render={proops => <Perfil {...proops}/>}/>
+          <Route exact path="/perfil/:id" render={proops => <Perfil {...proops}/>}/>
       </Switch>
     </BrowserRouter>
   );

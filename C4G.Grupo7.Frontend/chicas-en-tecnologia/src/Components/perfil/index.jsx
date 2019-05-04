@@ -8,20 +8,46 @@ import './perfil.css'
 
 
 
-const user = {nombre: "Pepita Argenta",
-apellido: "Cien",
-fechaNacimiento: "12/12/1992",
-descripcion: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam explicabo itaque numquam eius neque delectus minima minus! Accusantium autem accusamus vitae illo! Ducimus optio natus dolores, veniam quod laboriosam minima?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam explicabo itaque numquam eiusneque delectus minima minusAccusantium autem accusamus vitae illo! Ducimus optio natus dolores, veniam quod laboriosam minima?",
-localidad: {
-    pais: "Argentina",
-    provincia: "Buenos Aires",
-    localidad: "Parque Patricios",  
-},
-contenido: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
-foto: "",
-areaEspecializacion: "Cientifica",}
+ 
 
 export default class perfil extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+        id: null,
+        nombre: "",
+        apellido: "",
+        fechaNacimiento: "",
+        oficio: "",
+        descripcion: "",
+        localidad: {
+            pais: "",
+            provincia: "",
+            localidad: "",  
+        },
+        contenido: "",
+        foto: "",
+        areaEspecializacion: "",
+        visitas: 0,
+        }
+    }
+
+    componentDidMount() {
+        API.get(`/postulante/${this.props.match.params.id}/ver`).then(postulante => 
+            this.setState({id: postulante.id,
+                            nombre: postulante.nombre,
+                            apellido: postulante.apellido,
+                            fechaNacimiento: postulante.fechaNacimiento,
+                            oficio: postulante.oficio,
+                            descripcion: postulante.descripcion,
+                            localidad: postulante.localidad,
+                            contenido: postulante.contenido,
+                            areaEspecializacion: postulante.areaEspecializacion,
+                            foto: postulante.foto,
+                            visitas: postulante.visitas,
+            })).catch();
+    }
     render() {
         return (
             <div>
@@ -30,10 +56,10 @@ export default class perfil extends Component {
                         <div className="col-md-2"></div>
                         <div className="col-md-8">
                             <img src={photo} alt="profile photo" className="rounded-circle" />
-                            <h2>{user.nombre}</h2>
+                            <h2>{this.state.nombre}</h2>
                             <ul>
-                                <li>{user.areaEspecializacion}</li>
-                                <li>{user.localidad.pais}</li>
+                                <li>{this.state.areaEspecializacion}</li>
+                                <li>{this.state.localidad.pais}</li>
                             </ul>
                         </div>
                         <div className="col-md-2"></div>
@@ -43,7 +69,7 @@ export default class perfil extends Component {
                 <div className="container">
                     <h3> A brief story about me</h3>
 
-                    <p id="description">{user.descripcion}</p>
+                    <p id="description">{this.state.descripcion}</p>
 
                     <div className="row">
                         <div className="col-md-2"></div>
@@ -52,7 +78,7 @@ export default class perfil extends Component {
                             id="video"
                             playsInline
                             poster={logo}
-                            src={user.contenido}
+                            src={this.state.contenido}
                             />
                         </div>
                         <div className="col-md-2"></div>

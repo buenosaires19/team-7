@@ -28,7 +28,17 @@ class inicio extends React.Component {
     }
 
     componentDidMount() {
-        API.get("/postulante/masvisitado").then(users => this.setState({ usuarios: users })).catch(console.log("Fail"));
+        API.get("/postulante/masvisitado").then(postulante => this.setState({id: postulante.id,
+            nombre: postulante.nombre,
+            apellido: postulante.apellido,
+            fechaNacimiento: postulante.fechaNacimiento,
+            oficio: postulante.oficio,
+            descripcion: postulante.descripcion,
+            localidad: postulante.localidad,
+            contenido: postulante.contenido,
+            areaEspecializacion: postulante.areaEspecializacion,
+            foto: postulante.foto,
+            visitas: postulante.visitas,})).catch(console.log("Fail"));
     }
 
 
@@ -39,27 +49,10 @@ class inicio extends React.Component {
     goListado() {
         this.props.history.push(`/postulados`);
     }
-    /*
-    deleteUser() {
-        API.delete(`/user/${this.state.usuarioSeleccionado.id}/delete`)
-        .then(console.log(this.state)).catch(console.log("No pillo"))
-    }
-    */
+
 
     renderCard() {
         return (
-            // <div className="container borderShadow">
-            //     <div className='row'>
-            //         <div className='col-md-6'>
-            //         <img class="imgRedondeada" src={chica} alt="Test"/>
-            //         </div>
-            //         <div className="col-md-6 padding6">
-            //             <h5 class="card-title">Alejandra Rios</h5>
-            //             <p class="card-text">"La vida es una y hay que vivirla. La biotecnologia me cambio la vida."</p>
-            //             <p class="card-text">Bioquimica reconocida mundialmente</p>
-            //         </div>
-            //     </div>
-            // </div>
             <div class="card mb-3 card-custom">
                 <div class="row no-gutters">
                     <div class="col-md-4">
