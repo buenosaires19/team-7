@@ -24,13 +24,7 @@ class SignUp extends React.Component {
             foto: "",
             areaEspecializacion: "",
         }
-    }
-
-    componentDidMount() {
-        API.put('/postular/crear', this.state).then().catch();
-    }
-
-    
+    } 
 
     renderContent() {
         return(
@@ -66,7 +60,7 @@ class SignUp extends React.Component {
     }
 
     setOficio(event) {
-        //this.setState({nombre: event.target.value})
+        this.setState({nombre: event.target.value})
     }
 
     setDescripcion(event) {
@@ -86,7 +80,8 @@ class SignUp extends React.Component {
     }
 
     postuar() {
-        API.put('/postular/crear', this.state).then().catch(); 
+        API.put('/postulante/crear', this.state).then().catch(); 
+        this.props.history.push(`/`);
     }
 
     provincias() {
@@ -94,66 +89,9 @@ class SignUp extends React.Component {
         return pronvincias.map(prov => <option>{prov}</option>);
     }
 
-    formDer() {
-        return(
-            <div>
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputFoto">Foto</label>
-                        <input type="text" class="form-control" id="exampleInputFoto" placeholder="Pone Foto"onChange={event => this.setFoto(event)}/>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputVideo">Video</label>
-                        <input type="text" class="form-control" id="exampleInputVideo" placeholder="Pone url del video"onChange={event => this.setContenido(event)}/>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputDescripcion">Descripcion</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" onChange={event => this.setDescripcion(event)}></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputLocalidad">Localidad</label>
-                        <input type="text" class="form-control" id="exampleInputLocalidad" placeholder="Pone Localidad"onChange={event => this.setLocalidad(event)}/>
-                    </div>
-                    <div class="form-group">
-                    <label for="sel1">Select list:</label>
-                    <select class="form-control" id="sel1">
-                        {this.provincias()}
-                    </select>
-                    </div>    
-            </form>
-            <button class="btn btn-primary" onClick={() => this.postuar()} >Postular</button>  
-        </div>
-
-        );
-    }
-    formIzq() {
-        return(
-                <div>
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputElias">Nombre</label>
-                            <input type="text" class="form-control" id="exampleInputElias" placeholder="Pone nombre"onChange={event => this.setNombre(event)}/>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputJuarez">Apellido</label>
-                            <input type="text" class="form-control" id="exampleInputJuarez" placeholder="Pone Apellido"onChange={event => this.setApellido(event)}/>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInput12/03/1994">Fecha de nacimiento</label>
-                            <input type="date" class="form-control" id="exampleInput12/03/1994" placeholder=""onChange={event => this.setFechaNacimiento(event)}/>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEspecialidad">Especialidad</label>
-                            <input type="text" class="form-control" id="exampleInputEspecialidad" placeholder="Pone Especialidad"onChange={event => this.setEspecialidad(event)}/>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputOficio">Oficio actual</label>
-                            <select type="text" class="form-control" id="exampleInputOficio" placeholder="Pone Oficio actual"onChange={event => this.setOficio(event)}/>
-                        </div>
-                    </form>
-                </div>
-     
-        );
+    oficios(){
+        const oficios = ["DOCTORA", "PROGRAMADORA", "CIENTIFICA", "NANOTECNOLOGA"];
+        return oficios.map(ofi => <option>{ofi}</option>);
     }
 
     renderHeader() {
@@ -188,7 +126,7 @@ class SignUp extends React.Component {
                 </div><br/>
                 <div class="col-sm-12 displayFlex">
                     <label class="col-sm-1 col-form-label">Oficio</label>
-                    <input type="text" class="form-control col-sm-4" id="inputOficio" placeholder="Ingresar oficio"onChange={event => this.setOficio(event)}/>
+                    <select class="form-control col-sm-4" id="selectOficio"  onChange={event => this.setOficio(event)}>{this.oficios()}</select>
                     <label class="col-sm-1"/>
                     <label class="col-sm-1 col-form-label">Especialidad</label>
                     <input type="text" class="form-control col-sm-4" id="inputEspecialidad" placeholder="Ingresar especialidad"onChange={event => this.setEspecialidad(event)}/>
@@ -212,11 +150,24 @@ class SignUp extends React.Component {
             </div>
         );
     }
+
+    irInicio() {
+        this.props.history.push("/");
+    }
+
+    renderMenu() {
+        return(
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="navbar-brand" onClick={() => this.irInicio()}>Inicio</div>  
+        </nav>
+        );
+    }
     
 
     render() {
         return(
             <main>
+                {this.renderMenu()}
                 <body class="body-color">
                     {this.renderHeader()}
                     {this.renderForm()}

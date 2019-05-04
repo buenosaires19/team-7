@@ -24,17 +24,21 @@ class ListadoPostulantes extends React.Component {
     }
 
 
+    provincias() {
+        const pronvincias = ["Buenos Aires", "Rio Negro", "Chubut", "Santa Fe", "Tierra del Fuego", "Mendoza", "Cordoba", "Formosa", "Misiones", "Corrientes", "Entre Rios", "La Pampa", "San Juan", "Catamarca", "Tucuman", "Santa Cruz"]
+        return pronvincias.map(prov => <option>{prov}</option>);
+    }
     
 
     renderPostulantes() {
        return this.state.postulantes.map(postulante =>  <div class="card mb-3 card-custom">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src={chica} class="rounded-circle" alt="..."/>
+                <img src={chica} class="rounded-circle center" alt="..."/>
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">{postulante.nombre} {postulante.apellido}</h5>
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     <button onClick={() => this.redirect(postulante.id)}><p class="card-text"><small class="text-muted"></small></p></button>
                 </div>
@@ -50,7 +54,8 @@ class ListadoPostulantes extends React.Component {
             <body >
                 <h1>Postuladas</h1>
                 <div/><br/>
-                <div className="container backScroll">   
+                <select class="form-control col-sm-4" id="selectProvinicias"  onChange={event => this.setLocalidad(event)}>{this.provincias()}</select>
+                <div className="container backScroll full-screen">   
                     {this.renderPostulantes()}    
                 </div>
             </body>

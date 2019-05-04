@@ -10,7 +10,7 @@ class inicio extends React.Component {
 
     constructor() {
         super();
-        this.state = {
+        this.state ={
             nombre: "",
             apellido: "",
             fechaNacimiento: "",
@@ -28,7 +28,7 @@ class inicio extends React.Component {
     }
 
     componentDidMount() {
-        API.get("/postulante/masvisitado").then(postulante => this.setState({id: postulante.id,
+        API.get("/postulante/masVisitado").then(postulante => this.setState({id: postulante.id,
             nombre: postulante.nombre,
             apellido: postulante.apellido,
             fechaNacimiento: postulante.fechaNacimiento,
@@ -60,9 +60,9 @@ class inicio extends React.Component {
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <h5 class="card-title">{this.state.nombre} {this.state.apellido}</h5>
+                            <p class="card-text">{this.state.descripcion}</p>
+                            <p class="card-text"><small class="text-muted">{this.state.oficio}</small></p>
                         </div>
                     </div>
                 </div>
