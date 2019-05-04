@@ -82,11 +82,25 @@ public class PostulanteService {
         Localidad localidadBuenoAires = new Localidad("Argentina","Buenos Aires", "Merlo");
         Localidad localidadCordoba = new Localidad("Argentina","Cordoba", "Carlos Paz");
 
-        Postulante postulanteProgramadora = new Postulante("Rosalia","Paz", LocalDate.now(), Oficio.PROGRAMADORA, "Hija de doctor house",
+        Localidad localidadSanJuan = new Localidad("Argentina","San Juan","La grande");
+
+
+
+        Postulante postulanteProgramadora = new Postulante("Rosalia","Paz", LocalDate.now(), Oficio.CIENTIFICA, "Hija de doctor house",
                 localidadBuenoAires,"www.google.com","", "Ofmalmologa");
 
         Postulante postulanteDoctora = new Postulante("Silvia","Kochen", LocalDate.now(), Oficio.DOCTORA, "Hija de doctor house",
                 localidadCordoba,"www.google.com","", "Ofmalmologa");
+
+        Postulante postulanteSanJuan = new Postulante("Aixa","Rodríguez", LocalDate.now(), Oficio.DOCTORA, "La Geologia...",
+                localidadSanJuan,"www.google.com","", "Geologia");
+
+        Postulante postulanteSanJuanOther = new Postulante("Yesica","López", LocalDate.now(), Oficio.CIENTIFICA, "Trabajo en el Laboratorio ",
+                localidadSanJuan,"www.google.com","", "CIENCIAS BIOLÓGICAS");
+
+        Postulante postulanteBuenosAires = new Postulante("Verónica","Lassalle", LocalDate.now(), Oficio.NANOTECNOLOGA, "La investigación que ",
+                localidadSanJuan,"www.google.com","", "NANOTECNOLOGÍA MAGNÉTICA");
+
 
         postulanteDAO.save(
                 postulanteDoctora
@@ -94,6 +108,17 @@ public class PostulanteService {
 
         postulanteDAO.save(
                 postulanteProgramadora
+        );
+        postulanteDAO.save(
+                postulanteSanJuan
+        );
+
+        postulanteDAO.save(
+                postulanteSanJuanOther
+        );
+
+        postulanteDAO.save(
+                postulanteBuenosAires
         );
 
     }
