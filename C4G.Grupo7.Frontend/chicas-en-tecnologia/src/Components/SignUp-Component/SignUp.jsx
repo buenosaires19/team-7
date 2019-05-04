@@ -29,10 +29,17 @@ class SignUp extends React.Component {
 
     renderContent() {
         return(
-            <div class="card">
-                <div class="card-body">
-                    {this.form()}
-                 </div>             
+            <div>
+                <div class="container spaceBetween">
+                    <div class="row">
+                    <div class="col-sm">
+                    {this.formIzq()}
+                    </div>
+                    <div class="col-sm">
+                    {this.formDer()}
+                    </div>
+                    </div>
+                </div>
             </div>    
         );
     }
@@ -77,51 +84,70 @@ class SignUp extends React.Component {
         API.put('/postular/crear', this.state).then().catch(); 
     }
 
-    form() {
+    provincias() {
+        const pronvincias = ["Buenos Aires", "Rio Negro", "Chubut", "Santa Fe", "Tierra del Fuego", "Mendoza", "Cordoba", "Formosa", "Misiones", "Corrientes", "Entre Rios", "La Pampa", "San Juan", "Catamarca", "Tucuman", "Santa Cruz"]
+        return pronvincias.map(prov => <option>{prov}</option>);
+    }
+
+    formDer() {
         return(
-            <div class="card">
-                <div class="card-body">
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputElias">Nombre</label>
-                    <input type="text" class="form-control" id="exampleInputElias" placeholder="Pone nombre"onChange={event => this.setNombre(event)}/>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputJuarez">Apellido</label>
-                    <input type="text" class="form-control" id="exampleInputJuarez" placeholder="Pone Apellido"onChange={event => this.setApellido(event)}/>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInput12/03/1994">Fecha de nacimiento</label>
-                    <input type="text" class="form-control" id="exampleInput12/03/1994" placeholder="Pone Fecha de nacimiento"onChange={event => this.setFechaNacimiento(event)}/>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEspecialidad">Especialidad</label>
-                    <input type="text" class="form-control" id="exampleInputEspecialidad" placeholder="Pone Especialidad"onChange={event => this.setEspecialidad(event)}/>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputOficio">Oficio actual</label>
-                    <input type="text" class="form-control" id="exampleInputOficio" placeholder="Pone Oficio actual"onChange={event => this.setOficio(event)}/>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputFoto">Foto</label>
-                    <input type="text" class="form-control" id="exampleInputFoto" placeholder="Pone Foto"onChange={event => this.setFoto(event)}/>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputVideo">Video</label>
-                    <input type="text" class="form-control" id="exampleInputVideo" placeholder="Pone url del video"onChange={event => this.setContenido(event)}/>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputDescripcion">Descripcion</label>
-                    <input type="text" class="form-control" id="exampleInputDescripcion" placeholder="Pone Descripcion"onChange={event => this.setDescripcion(event)}/>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputLocalidad">Localidad</label>
-                    <input type="text" class="form-control" id="exampleInputLocalidad" placeholder="Pone Localidad"onChange={event => this.setLocalidad(event)}/>
-                </div>
-                <button class="btn btn-primary" onClick={() => this.postuar()} >Postular</button>
+            <div>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputFoto">Foto</label>
+                        <input type="text" class="form-control" id="exampleInputFoto" placeholder="Pone Foto"onChange={event => this.setFoto(event)}/>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputVideo">Video</label>
+                        <input type="text" class="form-control" id="exampleInputVideo" placeholder="Pone url del video"onChange={event => this.setContenido(event)}/>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputDescripcion">Descripcion</label>
+                        <input type="text" class="form-control" id="exampleInputDescripcion" placeholder="Pone Descripcion"onChange={event => this.setDescripcion(event)}/>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputLocalidad">Localidad</label>
+                        <input type="text" class="form-control" id="exampleInputLocalidad" placeholder="Pone Localidad"onChange={event => this.setLocalidad(event)}/>
+                    </div>
+                    <div class="form-group">
+                    <label for="sel1">Select list:</label>
+                    <select class="form-control" id="sel1">
+                        {this.provincias()}
+                    </select>
+                    </div>    
             </form>
-            </div>
-            </div>  
+            <button class="btn btn-primary" onClick={() => this.postuar()} >Postular</button>  
+        </div>
+
+        );
+    }
+    formIzq() {
+        return(
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputElias">Nombre</label>
+                            <input type="text" class="form-control" id="exampleInputElias" placeholder="Pone nombre"onChange={event => this.setNombre(event)}/>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputJuarez">Apellido</label>
+                            <input type="text" class="form-control" id="exampleInputJuarez" placeholder="Pone Apellido"onChange={event => this.setApellido(event)}/>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInput12/03/1994">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" id="exampleInput12/03/1994" placeholder=""onChange={event => this.setFechaNacimiento(event)}/>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEspecialidad">Especialidad</label>
+                            <input type="text" class="form-control" id="exampleInputEspecialidad" placeholder="Pone Especialidad"onChange={event => this.setEspecialidad(event)}/>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputOficio">Oficio actual</label>
+                            <input type="text" class="form-control" id="exampleInputOficio" placeholder="Pone Oficio actual"onChange={event => this.setOficio(event)}/>
+                        </div>
+                    </form>
+                </div>
+     
         );
     }
 
@@ -129,7 +155,7 @@ class SignUp extends React.Component {
     render() {
         return(
             <main>
-                <body class="body-sign">
+                <body class="body-color">
                     {//this.renderHeader()
                     }
                     {this.renderContent()}
