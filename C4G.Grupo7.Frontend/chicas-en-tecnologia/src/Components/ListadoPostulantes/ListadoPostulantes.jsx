@@ -1,6 +1,7 @@
 import React from 'react';
 import API from '../../API';
-import '../style.css'
+import './styleListado.css'
+import chica from '../Pictures/chica.jpg'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class ListadoPostulantes extends React.Component {
@@ -8,70 +9,49 @@ class ListadoPostulantes extends React.Component {
     constructor() {
         super();
         this.state = {
-            postulantes: [],
+            postulantes: [1, 2,3,4],
         } 
 
     }
 
-    /*componentDidMount(){
-        API.get("/postulantes").then(users => this.setState({usuarios: users})).catch(console.log("holis"));
-    }*/
-
-
-    renderUsuarios() {
-
-        return(
-            <div class="card">
-                {this.state.usuarios.map(usuario =>
-                    <div class="card-body" onClick={() => 
-                    this.setState({usuarioSeleccionado: usuario})}
-                    style={{
-                        backgroundColor: this.state.usuarioSeleccionado.name 
-                        && this.state.usuarioSeleccionado.name === usuario.name ? 'red' : 'beige',
-                        fontSize: '30px',
-                    }}
-                    >
-                    {usuario.name}
-                    
-                    </div>
-                )}
-            </div>
-            );
+    componentDidMount(){
+        API.get("/postulantes").then(postulantes1 => this.setState({postulantes: postulantes1})).catch(console.log());
     }
 
-    goNewUser() {
-       this.props.history.push('/user/new');
+
+    redirect(id) {
+       this.props.history.push(`perfil/${id}`);
     }
 
-    goUser() {
-        this.props.history.push(`/user/${this.state.usuarioSeleccionado.id}`);
-    }
 
-    deleteUser() {
-        API.delete(`/user/${this.state.usuarioSeleccionado.id}/delete`)
-        .then(console.log(this.state)).catch(console.log("No pillo"))
-    }
-
-    renderButtons() {
-        return(
-        <div class="Button-flex">
-     
-            <button type="button" className="btn btn-primary" onClick={() =>this.goNewUser()}> agregar usuario </button> 
-        
-            <button type="button" className="btn btn-primary" onClick={() =>this.deleteUser()}> eliminar usuario </button>
     
-            <button type="button" className="btn btn-primary" onClick={() =>this.goUser()}> ver usuario </button>
+
+    renderPostulantes() {
+       return this.state.postulantes.map(postulante =>  <div class="card mb-3 card-custom">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src={chica} class="rounded-circle" alt="..."/>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <button onClick={() => this.redirect(postulante.id)}><p class="card-text"><small class="text-muted"></small></p></button>
+                </div>
+            </div>
         </div>
-        );
+    </div>)
     }
 
     render() {
 
 
         return (
-            <body>
-                <div>   
-                    {this.renderButtons()}    
+            <body >
+                <h1>Postuladas</h1>
+                <div/><br/>
+                <div className="container backScroll">   
+                    {this.renderPostulantes()}    
                 </div>
             </body>
         );
