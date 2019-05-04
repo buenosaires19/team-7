@@ -1,10 +1,13 @@
 package grupo7Backend.C4G.Grupo7.services;
 
+import grupo7Backend.C4G.Grupo7.entities.Evento;
 import grupo7Backend.C4G.Grupo7.entities.Localidad;
 import grupo7Backend.C4G.Grupo7.entities.Postulante;
 import grupo7Backend.C4G.Grupo7.repositories.PostulanteDAO;
+import grupo7Backend.C4G.Grupo7.utils.Buscador;
 import grupo7Backend.C4G.Grupo7.utils.Oficio;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +17,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,6 +33,11 @@ public class PostulanteServiceTest {
     @Autowired
     private  PostulanteDAO postulanteDAO;
 
+
+    @Before
+    public void start() {
+        this.postulanteDAO.deleteAll();
+    }
 
     @Test
     public void guardarUnPostulante() {
@@ -123,9 +130,27 @@ public class PostulanteServiceTest {
 
     }
 
+    @Test
+    public void despuesDeAgregarUnEventoAUnPostulanteEsteTiene1Evento() {
+        Localidad localidad = new Localidad();
+        Postulante postulante = new Postulante("Fernanda","Lopez", LocalDate.now(), Oficio.DOCTORA, "Hija de doctor house",
+                localidad,"www.google.com","", "Ofmalmologa");
+        this.postulanteService.crear(postulante);
+
+        Evento unEvento = new Evento("Argentina","Bs As","Glew");
+        postulanteService.add(postulante.getId(),unEvento);
+
+        Postulante unPostulante = postulanteService.recuperar(postulante.getId());
+
+
+        assertEquals(1,unPostulante.getVisitas());
+        assertEquals(1,unPostulante.getEventos().size());
+
+    }
+
 
     @After
-    public void delete() {
+    public void clear() {
         this.postulanteDAO.deleteAll();
     }
 }
