@@ -3,7 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../SignUp-Component/style.css'
 import API from '../../API.js';
 
+
 class SignUp extends React.Component {
+
+
 
     constructor() {
         super();
@@ -26,6 +29,8 @@ class SignUp extends React.Component {
     componentDidMount() {
         API.put('/postular/crear', this.state).then().catch();
     }
+
+    
 
     renderContent() {
         return(
@@ -103,7 +108,7 @@ class SignUp extends React.Component {
                     </div>
                     <div class="form-group">
                         <label for="exampleInputDescripcion">Descripcion</label>
-                        <input type="text" class="form-control" id="exampleInputDescripcion" placeholder="Pone Descripcion"onChange={event => this.setDescripcion(event)}/>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" onChange={event => this.setDescripcion(event)}></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputLocalidad">Localidad</label>
@@ -143,7 +148,7 @@ class SignUp extends React.Component {
                         </div>
                         <div class="form-group">
                             <label for="exampleInputOficio">Oficio actual</label>
-                            <input type="text" class="form-control" id="exampleInputOficio" placeholder="Pone Oficio actual"onChange={event => this.setOficio(event)}/>
+                            <select type="text" class="form-control" id="exampleInputOficio" placeholder="Pone Oficio actual"onChange={event => this.setOficio(event)}/>
                         </div>
                     </form>
                 </div>
@@ -151,16 +156,70 @@ class SignUp extends React.Component {
         );
     }
 
+    renderHeader() {
+        return(
+            <div><br/>
+            <h1 style={{textAlign: "center"}}>
+                <span>Postulada</span>
+            </h1><br/>
+            </div>
+        );
+    }
+
+    renderForm() {
+        return (
+            <div className="container background-abm">
+                <div>
+                <label class="col-sm-1"/>
+                </div><br/>
+                <div class="col-sm-12 displayFlex">
+                    <label class="col-sm-1 col-form-label">Nombre</label>
+                    <input type="text" class="form-control col-sm-4" id="inputNombre" placeholder="Ingresar nombre"onChange={event => this.setNombre(event)}/>
+                    <label class="col-sm-1"/>
+                    <label class="col-sm-1 col-form-label">Apellido</label>
+                    <input type="text" class="form-control col-sm-4" id="inputApellido" placeholder="Ingresar apellido"onChange={event => this.setApellido(event)}/>
+                </div><br/>
+                <div class="col-sm-12 displayFlex">
+                    <label class="col-sm-2 col-form-label">Fecha de nacimiento</label>
+                    <input type="date" class="form-control col-sm-3" id="inputFechaNac" onChange={event => this.setFechaNacimiento(event)}/>
+                    <label class="col-sm-1"/>
+                    <label class="col-sm-1 col-form-label">Localidad</label>
+                    <select class="form-control col-sm-4" id="selectProvinicias"  onChange={event => this.setLocalidad(event)}>{this.provincias()}</select>
+                </div><br/>
+                <div class="col-sm-12 displayFlex">
+                    <label class="col-sm-1 col-form-label">Oficio</label>
+                    <input type="text" class="form-control col-sm-4" id="inputOficio" placeholder="Ingresar oficio"onChange={event => this.setOficio(event)}/>
+                    <label class="col-sm-1"/>
+                    <label class="col-sm-1 col-form-label">Especialidad</label>
+                    <input type="text" class="form-control col-sm-4" id="inputEspecialidad" placeholder="Ingresar especialidad"onChange={event => this.setEspecialidad(event)}/>
+                </div><br/>
+                <div class="col-sm-12 displayFlex">
+                    <label class="col-sm-1 col-form-label">Foto</label>
+                    <input type="text" class="form-control col-sm-4" id="inputFoto" onChange={event => this.setFoto(event)}/>
+                    <label class="col-sm-1"/>
+                    <label class="col-sm-1 col-form-label">Video</label>
+                    <input class="form-control col-sm-4" id="inputContenido"  onChange={event => this.setContenido(event)}></input>
+                </div><br/>
+                <div class="col-sm-12" style={{textAlign: "center"}}>
+                    <label class="col-sm-2 col-form-label">Descripción</label>
+                </div>
+                <div class="col-sm-12 displayFlex">
+                    <label class="col-sm-3"/>
+                    <textarea rows="4" cols="210" class="form-control col-sm-6" id="inputDescripcion" onChange={event => this.setDescripcion(event)}></textarea>
+                    <label class="col-sm-1"/>
+                    <button class="btn btn-lg btn-secondary" onClick={() => this.postuar()} >Postular</button>  
+                </div>
+            </div>
+        );
+    }
+    
 
     render() {
         return(
             <main>
                 <body class="body-color">
-                    {//this.renderHeader()
-                    }
-                    {this.renderContent()}
-                    {//this.renderFooter()
-                    }
+                    {this.renderHeader()}
+                    {this.renderForm()}
                 </body>
             </main>
         );
