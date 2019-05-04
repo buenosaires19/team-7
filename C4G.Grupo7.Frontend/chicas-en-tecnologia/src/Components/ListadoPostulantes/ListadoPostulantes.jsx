@@ -87,16 +87,16 @@ class ListadoPostulantes extends React.Component {
 
 
         return (
-            <main>
+            <main className="custom-algo">
                 {this.renderMenu()}
-                <body >
+                <div className="container-fluid">
                     <h1>Postuladas</h1>
                     <div/><br/>
                     <select class="form-control col-sm-4" id="selectProvinicias"  onChange={event => this.setProvincia(event)}>{this.provincias()}</select>
                     <div className="container backScroll full-screen">   
                         {this.renderPostulantes()}    
                     </div>
-                </body>
+                </div>
             </main>
         );
     }
