@@ -1,5 +1,4 @@
 import React from 'react';
-//import API from '../../ApiComponent'
 import './style.css'
 import logo from '../logo-big.svg'
 import chica from '../Components/Pictures/chica.jpg'
@@ -11,13 +10,18 @@ class inicio extends React.Component {
     constructor() {
         super();
         this.state = {
-            usuarioSeleccionado: {
-                "id": 0,
-                "name": "",
-                "surname": "",
-                "email": "",
-                "dni": 0
-            }
+                nombre: "",
+                apellido: "",
+                fechaNacimiento: "",
+                descripcion: "",
+                localidad: {
+                    pais: "",
+                    provincia: "",
+                    localidad: "",  
+                },
+                contenido: "",
+                foto: "",
+                areaEspecializacion: "",
         } 
 
     }

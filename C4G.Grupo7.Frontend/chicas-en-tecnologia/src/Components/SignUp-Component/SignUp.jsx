@@ -24,7 +24,7 @@ class SignUp extends React.Component {
     }
 
     componentDidMount() {
-
+        API.put('/postular/crear', this.state).then().catch();
     }
 
     renderContent() {
