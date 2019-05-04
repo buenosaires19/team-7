@@ -1,18 +1,26 @@
 package grupo7Backend.C4G.Grupo7.services;
 
+import grupo7Backend.C4G.Grupo7.entities.Evento;
+import grupo7Backend.C4G.Grupo7.entities.Localidad;
 import grupo7Backend.C4G.Grupo7.entities.Postulante;
 import grupo7Backend.C4G.Grupo7.repositories.PostulanteDAO;
+import grupo7Backend.C4G.Grupo7.utils.Buscador;
 import grupo7Backend.C4G.Grupo7.utils.Oficio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 @Component("postulanteService")
+@Transactional
 public class PostulanteService {
 
     private final PostulanteDAO postulanteDAO;
@@ -31,9 +39,7 @@ public class PostulanteService {
         if(!postulante.isPresent()){
             throw new RuntimeException("No existe postulante");
         }
-        Postulante postulanteNuevo = postulante.get();
-        postulanteNuevo.sumarVisita();
-        return postulanteNuevo;
+        return postulante.get();
     }
 
     public Postulante editar(Postulante unPostulante) {
@@ -44,6 +50,7 @@ public class PostulanteService {
     public List<Postulante> recuperarTodo() {
         return postulanteDAO.findAll();
     }
+
     public Page<Postulante> recuperarSegunFiltro(Buscador unBuscador) {
         return this.postulanteDAO.findByLocalidadProvinciaAndOficio(
                 PageRequest.of(unBuscador.getIndex(),unBuscador.getSize()),
@@ -56,5 +63,38 @@ public class PostulanteService {
 
     public Postulante masVisitado() {
         return this.postulanteDAO.masVisitado();
+    }
+
+    public Postulante add(Long id, Evento unEvento) {
+        Postulante unPostulante = this.recuperar(id);
+        unPostulante.incrementarVisita();
+        unPostulante.addEvento(unEvento);
+
+
+        return this.postulanteDAO.save(unPostulante);
+
+
+    }
+
+    @EventListener
+    public void initializer(ApplicationReadyEvent event){
+
+        Localidad localidadBuenoAires = new Localidad("Argentina","Buenos Aires", "Merlo");
+        Localidad localidadCordoba = new Localidad("Argentina","Cordoba", "Carlos Paz");
+
+        Postulante postulanteProgramadora = new Postulante("Rosalia","Paz", LocalDate.now(), Oficio.PROGRAMADORA, "Hija de doctor house",
+                localidadBuenoAires,"www.google.com","", "Ofmalmologa");
+
+        Postulante postulanteDoctora = new Postulante("Silvia","Kochen", LocalDate.now(), Oficio.DOCTORA, "Hija de doctor house",
+                localidadCordoba,"www.google.com","", "Ofmalmologa");
+
+        postulanteDAO.save(
+                postulanteDoctora
+			);
+
+        postulanteDAO.save(
+                postulanteProgramadora
+        );
+
     }
 }
