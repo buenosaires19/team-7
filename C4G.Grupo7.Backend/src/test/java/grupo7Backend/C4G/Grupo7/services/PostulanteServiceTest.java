@@ -34,4 +34,22 @@ public class PostulanteServiceTest {
         assertEquals(postulante.getNombre(),postulanteRecuperado.getNombre());
 
     }
+
+    @Test
+    public void seRecuperanTodosLosPostulantesGuardados(){
+        Localidad localidad = new Localidad();
+
+        Postulante aPostulante = new Postulante("Francisco","Lopez", LocalDate.now(), Oficio.DOCTORA, "Hija de doctor house",
+                localidad,"www.google.com","", "Ofmalmologa");
+
+        Localidad otherLocalidad = new Localidad();
+        Postulante otherPostulante = new Postulante("Juana","Juanez", LocalDate.now(), Oficio.PROGRAMADORA, "Hija de doctor house",
+                otherLocalidad,"www.google.com","", "Ofmalmologa");
+        this.postulanteService.crear(aPostulante);
+        this.postulanteService.crear(otherPostulante);
+
+        assertEquals(this.postulanteService.recuperarTodo().size(),2);
+
+
+    }
 }

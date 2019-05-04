@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component("postulanteService")
@@ -30,4 +31,11 @@ public class PostulanteService {
         return postulante.get();
 
     }
+
+    public List<Postulante> recuperarTodo() {
+        return postulanteDAO.findAll();
+    }
+
+
+
 }

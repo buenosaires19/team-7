@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
@@ -24,6 +25,11 @@ public class PostulanteController {
     @PutMapping("/postulante/crear")
     public Postulante crear(@RequestBody @Valid Postulante unPostulante){
         return postulanteService.crear(unPostulante);
+    }
+
+    @GetMapping("/postulantes")
+    public List<Postulante> all(){
+        return postulanteService.recuperarTodo();
     }
 
 }
