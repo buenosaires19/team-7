@@ -51,9 +51,8 @@ public class PostulanteService {
         return postulanteDAO.findAll();
     }
 
-    public Page<Postulante> recuperarSegunFiltro(Buscador unBuscador) {
+    public List<Postulante> recuperarSegunFiltro(Buscador unBuscador) {
         return this.postulanteDAO.findByLocalidadProvinciaAndOficio(
-                PageRequest.of(unBuscador.getIndex(),unBuscador.getSize()),
                 unBuscador.getProvincia(), unBuscador.getOficio());
     }
 
@@ -88,29 +87,41 @@ public class PostulanteService {
 
 
         Postulante postulanteProgramadora = new Postulante("Rosalia","Paz", LocalDate.now(), Oficio.CIENTIFICA, "Hija de doctor house",
-                localidadBuenoAires,"www.google.com","", "Ofmalmologa");
+                localidadBuenoAires,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/rosalia-paz.jpg"
+                , "Ofmalmologa");
+
         postulanteProgramadora.addEvento(eventoBsAs);
         postulanteProgramadora.addEvento(new Evento("Argentina","Bs As","Glew"));
         postulanteProgramadora.addEvento(new Evento("Argentina","Santa Fe","Rosario"));
         postulanteProgramadora.addEvento(new Evento("Argentina","Bs As","Glew"));
 
+
+
+
+
+
         Postulante postulanteDoctora = new Postulante("Silvia","Kochen", LocalDate.now(), Oficio.DOCTORA, "Hija de doctor house",
-                localidadCordoba,"www.google.com","", "Ofmalmologa");
+                localidadCordoba,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/silvia-kochen.jpg"
+                , "Ofmalmologa");
         postulanteDoctora.addEvento(new Evento("Argentina","Cordoba","Cordoba"));
         postulanteDoctora.addEvento(new Evento("Argentina","Santa Fe","Santa Fe"));
         postulanteDoctora.addEvento(new Evento("Argentina","Bs As","Lomas Zamora"));
 
-        Postulante postulanteSanJuan = new Postulante("Aixa","Rodríguez", LocalDate.now(), Oficio.DOCTORA, "La Geologia...",
-                localidadSanJuan,"www.google.com","", "Geologia");
-        postulanteSanJuan.addEvento(new Evento("Argentina","Mendoza","Magnetica"));
-        postulanteSanJuan.addEvento(new Evento("Argentina","Mendoza","Magnetica"));
 
+        Postulante postulanteSanJuan = new Postulante("Aixa","Rodríguez", LocalDate.now(), Oficio.DOCTORA, "La Geologia...",
+                localidadSanJuan,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/aixa.jpg"
+                , "Geologia");
+        postulanteSanJuan.addEvento(new Evento("Argentina","Mendoza","Magnetica"));
+        postulanteSanJuan.addEvento(new Evento("Argentina","Mendoza","Magnetica"));
 
         Postulante postulanteSanJuanOther = new Postulante("Yesica","López", LocalDate.now(), Oficio.CIENTIFICA, "Trabajo en el Laboratorio ",
-                localidadSanJuan,"www.google.com","", "CIENCIAS BIOLÓGICAS");
+                localidadSanJuan,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/yesica-frontini.jpg"
+                , "CIENCIAS BIOLÓGICAS");
         postulanteSanJuanOther.addEvento(new Evento("Argentina","Bs As","Glew"));
+
         Postulante postulanteBuenosAires = new Postulante("Verónica","Lassalle", LocalDate.now(), Oficio.NANOTECNOLOGA, "La investigación que ",
-                localidadSanJuan,"www.google.com","", "NANOTECNOLOGÍA MAGNÉTICA");
+                localidadSanJuan,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/veronica-lasalle.jpg"
+                , "NANOTECNOLOGÍA MAGNÉTICA");
 
 
         postulanteDAO.save(

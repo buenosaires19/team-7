@@ -103,12 +103,11 @@ public class PostulanteServiceTest {
         this.postulanteService.crear(aPostulante);
         this.postulanteService.crear(otherPostulante);
 
-        Buscador unBuscador = new Buscador(0,1,Oficio.PROGRAMADORA,provincia);
+        Buscador unBuscador = new Buscador(Oficio.PROGRAMADORA,provincia);
 
-        Page<Postulante> postulantesDeBuenosAiresProgramadores = this.postulanteService.recuperarSegunFiltro(unBuscador);
-        assertEquals(1, postulantesDeBuenosAiresProgramadores.getContent().size());
-        assertEquals(aPostulante.getId(),postulantesDeBuenosAiresProgramadores.getContent().get(0).getId());
-        assertEquals(aPostulante.getOficio(),postulantesDeBuenosAiresProgramadores.getContent().get(0).getOficio());
+        List<Postulante> postulantesDeBuenosAiresProgramadores = this.postulanteService.recuperarSegunFiltro(unBuscador);
+        assertEquals(aPostulante.getId(),postulantesDeBuenosAiresProgramadores.get(0).getId());
+        assertEquals(aPostulante.getOficio(),postulantesDeBuenosAiresProgramadores.get(0).getOficio());
 
     }
     public void seRecuperaAlPostulanteMasVisitado(){

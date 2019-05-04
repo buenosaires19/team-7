@@ -40,7 +40,7 @@ public class PostulanteController {
     }
 
     @PostMapping("/postulantes")
-    public Page<Postulante> recuperar(@RequestBody @Valid Buscador unBuscador){
+    public List<Postulante> recuperar(@RequestBody @Valid Buscador unBuscador){
         return postulanteService.recuperarSegunFiltro(unBuscador);
     }
 
