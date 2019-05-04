@@ -2,7 +2,7 @@ import React from 'react';
 //import API from '../../ApiComponent'
 import './style.css'
 import logo from '../logo-big.svg'
-
+import chica from '../Components/Pictures/chica.jpg'
 
 class inicio extends React.Component {
 
@@ -53,7 +53,11 @@ class inicio extends React.Component {
                         <img src={logo}  alt="chica en tecnologia"/> 
                     </div>
                     <div className="row">
+                    
+                    <div className="container text-center"> 
+                    <img src={chica} class="rounded" alt="chica test"/> aosjdoiasdoiasjdasoidajsodajsdiasdoiajsdoi
                         
+                        </div>
                     </div>
                     <div className="row text-center">
                         <div className="col-md-6">
