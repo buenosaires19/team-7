@@ -158,7 +158,8 @@ class SignUp extends React.Component {
     renderMenu() {
         return(
         <nav class="navbar navbar-dark bg-dark">
-            <div class="navbar-brand" onClick={() => this.irInicio()}>Inicio</div>  
+            <div class="navbar-brand" onClick={() => this.irInicio()}>Inicio</div>
+            <a href="https://www.chicasentecnologia.org/"><span>FAQ</span></a>
         </nav>
         );
     }
