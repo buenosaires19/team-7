@@ -87,19 +87,24 @@ public class PostulanteService {
 
 
         Postulante postulanteProgramadora = new Postulante("Rosalia","Paz", LocalDate.now(), Oficio.CIENTIFICA, "Hija de doctor house",
-                localidadBuenoAires,"www.google.com","", "Ofmalmologa");
+                localidadBuenoAires,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/rosalia-paz.jpg"
+                , "Ofmalmologa");
 
         Postulante postulanteDoctora = new Postulante("Silvia","Kochen", LocalDate.now(), Oficio.DOCTORA, "Hija de doctor house",
-                localidadCordoba,"www.google.com","", "Ofmalmologa");
+                localidadCordoba,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/silvia-kochen.jpg"
+                , "Ofmalmologa");
 
         Postulante postulanteSanJuan = new Postulante("Aixa","Rodríguez", LocalDate.now(), Oficio.DOCTORA, "La Geologia...",
-                localidadSanJuan,"www.google.com","", "Geologia");
+                localidadSanJuan,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/aixa.jpg"
+                , "Geologia");
 
         Postulante postulanteSanJuanOther = new Postulante("Yesica","López", LocalDate.now(), Oficio.CIENTIFICA, "Trabajo en el Laboratorio ",
-                localidadSanJuan,"www.google.com","", "CIENCIAS BIOLÓGICAS");
+                localidadSanJuan,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/yesica-frontini.jpg"
+                , "CIENCIAS BIOLÓGICAS");
 
         Postulante postulanteBuenosAires = new Postulante("Verónica","Lassalle", LocalDate.now(), Oficio.NANOTECNOLOGA, "La investigación que ",
-                localidadSanJuan,"www.google.com","", "NANOTECNOLOGÍA MAGNÉTICA");
+                localidadSanJuan,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/veronica-lasalle.jpg"
+                , "NANOTECNOLOGÍA MAGNÉTICA");
 
 
         postulanteDAO.save(
