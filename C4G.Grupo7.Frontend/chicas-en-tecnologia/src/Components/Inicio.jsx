@@ -1,14 +1,33 @@
 import React from 'react';
-//import API from '../../ApiComponent'
 import './style.css'
 import logo from '../logo-big.svg'
+import chica from '../Components/Pictures/chica.jpg'
+import API from '../API'
 
 
 class inicio extends React.Component {
 
     constructor() {
         super();
+        this.state = {
+                nombre: "",
+                apellido: "",
+                fechaNacimiento: "",
+                descripcion: "",
+                localidad: {
+                    pais: "",
+                    provincia: "",
+                    localidad: "",  
+                },
+                contenido: "",
+                foto: "",
+                areaEspecializacion: "",
+        } 
 
+    }
+
+    componentDidMount(){
+        API.get("/postulante/masvisitado").then(users => this.setState({usuarios: users})).catch(console.log("Fail"));
     }
 
     renderUsuarios() {
@@ -52,15 +71,19 @@ class inicio extends React.Component {
                     <div className="row">
                         <img src={logo}  alt="chica en tecnologia"/> 
                     </div>
-                    <div className="row">
+                    <div className="row ">
+                    
+                    <div id='fade' className="container text-center"> 
+                    <img src={chica} class="rounded achicarImg" alt="chica test"/> <h1>Maria elena</h1><h2>Psicologa</h2>
                         
+                    </div>
                     </div>
                     <div className="row text-center">
                         <div className="col-md-6">
-                            <button type="button" className="btn btn-primary" onClick={() => this.goPostulante()}> Postular </button>
+                            <button type="button" className="btn btn-outline-light" onClick={() => this.goPostulante()}> Postular </button>
                         </div>
                         <div className="col-md-6">
-                            <button type="button" className="btn btn-primary" > Listado </button>
+                        <button type="button" class="btn btn-outline-light">Listas</button>
                         </div>
                     </div>
                 </div>
