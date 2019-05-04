@@ -2,6 +2,7 @@ package grupo7Backend.C4G.Grupo7.services;
 
 import grupo7Backend.C4G.Grupo7.entities.Postulante;
 import grupo7Backend.C4G.Grupo7.repositories.PostulanteDAO;
+import grupo7Backend.C4G.Grupo7.utils.Oficio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -42,6 +43,7 @@ public class PostulanteService {
         return postulanteDAO.findAll();
     }
 
-
-
+    public List<Postulante> recuperarSegunFiltro(String provincia, Oficio oficio) {
+        return this.postulanteDAO.findByLocalidadProvinciaAndOficio(provincia, oficio);
+    }
 }
