@@ -15,9 +15,12 @@ import java.util.List;
 public interface PostulanteDAO extends JpaRepository<Postulante, Long> {
     List<Postulante> findByLocalidadProvinciaAndOficio(String provincia, Oficio oficio);
 
+
     Page<Postulante> findByLocalidadProvinciaAndOficio(Pageable pageable,String provincia, Oficio oficio);
 
     @Query(value = "select * from Postulante p order by p.visitas desc limit 1",nativeQuery = true)
     Postulante masVisitado();
+
+
 
 }

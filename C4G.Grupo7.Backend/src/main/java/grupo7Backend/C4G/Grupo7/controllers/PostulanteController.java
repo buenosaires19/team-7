@@ -39,6 +39,11 @@ public class PostulanteController {
         return postulanteService.recuperarTodo();
     }
 
+    @GetMapping("/postulantes/byVisita")
+    public List<Postulante> allByVisita(){
+        return postulanteService.allByVisita();
+    }
+
     @PostMapping("/postulantes")
     public List<Postulante> recuperar(@RequestBody @Valid Buscador unBuscador){
         return postulanteService.recuperarSegunFiltro(unBuscador);

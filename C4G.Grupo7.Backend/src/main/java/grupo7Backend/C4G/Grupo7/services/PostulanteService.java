@@ -12,6 +12,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -94,7 +95,7 @@ public class PostulanteService {
         postulanteProgramadora.addEvento(new Evento("Argentina","Bs As","Glew"));
         postulanteProgramadora.addEvento(new Evento("Argentina","Santa Fe","Rosario"));
         postulanteProgramadora.addEvento(new Evento("Argentina","Bs As","Glew"));
-
+        postulanteProgramadora.setVisitas(4);
 
 
 
@@ -106,18 +107,28 @@ public class PostulanteService {
         postulanteDoctora.addEvento(new Evento("Argentina","Cordoba","Cordoba"));
         postulanteDoctora.addEvento(new Evento("Argentina","Santa Fe","Santa Fe"));
         postulanteDoctora.addEvento(new Evento("Argentina","Bs As","Lomas Zamora"));
-
+        postulanteDoctora.setVisitas(3);
 
         Postulante postulanteSanJuan = new Postulante("Aixa","Rodríguez", LocalDate.now(), Oficio.DOCTORA, "La Geologia...",
                 localidadSanJuan,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/aixa.jpg"
                 , "Geologia");
         postulanteSanJuan.addEvento(new Evento("Argentina","Mendoza","Magnetica"));
         postulanteSanJuan.addEvento(new Evento("Argentina","Mendoza","Magnetica"));
+        postulanteSanJuan.addEvento(new Evento("Argentina","Mendoza","Magnetica"));
+        postulanteSanJuan.addEvento(new Evento("Argentina","Mendoza","Magnetica"));
+        postulanteSanJuan.addEvento(new Evento("Argentina","Mendoza","Magnetica"));
+        postulanteSanJuan.addEvento(new Evento("Argentina","Mendoza","Magnetica"));
+        postulanteSanJuan.addEvento(new Evento("Argentina","Mendoza","Magnetica"));
+        postulanteSanJuan.addEvento(new Evento("Argentina","Mendoza","Magnetica"));
+        postulanteSanJuan.addEvento(new Evento("Argentina","Bs As","Glew"));
+        postulanteSanJuan.addEvento(new Evento("Argentina","Bs As","Glew"));
+        postulanteSanJuan.setVisitas(10);
 
         Postulante postulanteSanJuanOther = new Postulante("Yesica","López", LocalDate.now(), Oficio.CIENTIFICA, "Trabajo en el Laboratorio ",
                 localidadSanJuan,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/yesica-frontini.jpg"
                 , "CIENCIAS BIOLÓGICAS");
         postulanteSanJuanOther.addEvento(new Evento("Argentina","Bs As","Glew"));
+        postulanteSanJuanOther.setVisitas(1);
 
         Postulante postulanteBuenosAires = new Postulante("Verónica","Lassalle", LocalDate.now(), Oficio.NANOTECNOLOGA, "La investigación que ",
                 localidadSanJuan,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/veronica-lasalle.jpg"
@@ -143,5 +154,9 @@ public class PostulanteService {
                 postulanteBuenosAires
         );
 
+    }
+
+    public List<Postulante> allByVisita() {
+       return postulanteDAO.findAll(new Sort(Sort.Direction.DESC, "visitas"));
     }
 }
