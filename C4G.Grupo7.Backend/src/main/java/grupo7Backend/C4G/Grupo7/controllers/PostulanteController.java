@@ -13,7 +13,6 @@ import javax.validation.Valid;
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class PostulanteController {
 
-
     private final PostulanteService postulanteService;
 
     @Autowired
@@ -26,4 +25,8 @@ public class PostulanteController {
         return postulanteService.crear(unPostulante);
     }
 
+    @PostMapping("/user/edit")
+    public Postulante editar(@RequestBody @Valid Postulante unPostulante){
+        return postulanteService.editar(unPostulante);
+    }
 }
