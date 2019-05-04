@@ -51,9 +51,8 @@ public class PostulanteService {
         return postulanteDAO.findAll();
     }
 
-    public Page<Postulante> recuperarSegunFiltro(Buscador unBuscador) {
+    public List<Postulante> recuperarSegunFiltro(Buscador unBuscador) {
         return this.postulanteDAO.findByLocalidadProvinciaAndOficio(
-                PageRequest.of(unBuscador.getIndex(),unBuscador.getSize()),
                 unBuscador.getProvincia(), unBuscador.getOficio());
     }
 
@@ -82,11 +81,30 @@ public class PostulanteService {
         Localidad localidadBuenoAires = new Localidad("Argentina","Buenos Aires", "Merlo");
         Localidad localidadCordoba = new Localidad("Argentina","Cordoba", "Carlos Paz");
 
-        Postulante postulanteProgramadora = new Postulante("Rosalia","Paz", LocalDate.now(), Oficio.PROGRAMADORA, "Hija de doctor house",
-                localidadBuenoAires,"www.google.com","", "Ofmalmologa");
+        Localidad localidadSanJuan = new Localidad("Argentina","San Juan","La grande");
+
+
+
+        Postulante postulanteProgramadora = new Postulante("Rosalia","Paz", LocalDate.now(), Oficio.CIENTIFICA, "Hija de doctor house",
+                localidadBuenoAires,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/rosalia-paz.jpg"
+                , "Ofmalmologa");
 
         Postulante postulanteDoctora = new Postulante("Silvia","Kochen", LocalDate.now(), Oficio.DOCTORA, "Hija de doctor house",
-                localidadCordoba,"www.google.com","", "Ofmalmologa");
+                localidadCordoba,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/silvia-kochen.jpg"
+                , "Ofmalmologa");
+
+        Postulante postulanteSanJuan = new Postulante("Aixa","Rodríguez", LocalDate.now(), Oficio.DOCTORA, "La Geologia...",
+                localidadSanJuan,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/aixa.jpg"
+                , "Geologia");
+
+        Postulante postulanteSanJuanOther = new Postulante("Yesica","López", LocalDate.now(), Oficio.CIENTIFICA, "Trabajo en el Laboratorio ",
+                localidadSanJuan,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/yesica-frontini.jpg"
+                , "CIENCIAS BIOLÓGICAS");
+
+        Postulante postulanteBuenosAires = new Postulante("Verónica","Lassalle", LocalDate.now(), Oficio.NANOTECNOLOGA, "La investigación que ",
+                localidadSanJuan,"www.google.com","https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/veronica-lasalle.jpg"
+                , "NANOTECNOLOGÍA MAGNÉTICA");
+
 
         postulanteDAO.save(
                 postulanteDoctora
@@ -94,6 +112,17 @@ public class PostulanteService {
 
         postulanteDAO.save(
                 postulanteProgramadora
+        );
+        postulanteDAO.save(
+                postulanteSanJuan
+        );
+
+        postulanteDAO.save(
+                postulanteSanJuanOther
+        );
+
+        postulanteDAO.save(
+                postulanteBuenosAires
         );
 
     }
