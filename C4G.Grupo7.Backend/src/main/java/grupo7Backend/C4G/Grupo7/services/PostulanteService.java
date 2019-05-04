@@ -53,4 +53,8 @@ public class PostulanteService {
     public List<Postulante> recuperarSegunFiltro(String provincia, Oficio oficio) {
         return this.postulanteDAO.findByLocalidadProvinciaAndOficio(provincia, oficio);
     }
+
+    public Postulante masVisitado() {
+        return this.postulanteDAO.masVisitado();
+    }
 }

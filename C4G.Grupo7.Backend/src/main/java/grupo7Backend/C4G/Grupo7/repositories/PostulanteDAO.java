@@ -6,6 +6,7 @@ import grupo7Backend.C4G.Grupo7.utils.Oficio;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,6 +14,10 @@ import java.util.List;
 @Component("postulanteDAO")
 public interface PostulanteDAO extends JpaRepository<Postulante, Long> {
     List<Postulante> findByLocalidadProvinciaAndOficio(String provincia, Oficio oficio);
+
     Page<Postulante> findByLocalidadProvinciaAndOficio(Pageable pageable,String provincia, Oficio oficio);
+
+    @Query(value = "select * from Postulante p order by p.visitas desc limit 1",nativeQuery = true)
+    Postulante masVisitado();
 
 }
