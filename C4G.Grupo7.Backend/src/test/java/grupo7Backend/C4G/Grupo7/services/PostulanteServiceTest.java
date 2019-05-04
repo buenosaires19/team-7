@@ -3,6 +3,7 @@ package grupo7Backend.C4G.Grupo7.services;
 import grupo7Backend.C4G.Grupo7.entities.Localidad;
 import grupo7Backend.C4G.Grupo7.entities.Postulante;
 import grupo7Backend.C4G.Grupo7.repositories.PostulanteDAO;
+import grupo7Backend.C4G.Grupo7.utils.Buscador;
 import grupo7Backend.C4G.Grupo7.utils.Oficio;
 import org.junit.After;
 import org.junit.Test;
@@ -14,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -125,7 +125,7 @@ public class PostulanteServiceTest {
 
 
     @After
-    public void delete() {
+    public void clear() {
         this.postulanteDAO.deleteAll();
     }
 }

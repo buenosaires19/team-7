@@ -1,5 +1,7 @@
 package grupo7Backend.C4G.Grupo7.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import grupo7Backend.C4G.Grupo7.utils.Oficio;
 
 import javax.persistence.*;

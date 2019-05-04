@@ -2,17 +2,20 @@ package grupo7Backend.C4G.Grupo7.services;
 
 import grupo7Backend.C4G.Grupo7.entities.Postulante;
 import grupo7Backend.C4G.Grupo7.repositories.PostulanteDAO;
+import grupo7Backend.C4G.Grupo7.utils.Buscador;
 import grupo7Backend.C4G.Grupo7.utils.Oficio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Component("postulanteService")
+@Transactional
 public class PostulanteService {
 
     private final PostulanteDAO postulanteDAO;
@@ -31,9 +34,14 @@ public class PostulanteService {
         if(!postulante.isPresent()){
             throw new RuntimeException("No existe postulante");
         }
-        Postulante postulanteNuevo = postulante.get();
-        postulanteNuevo.sumarVisita();
-        return postulanteNuevo;
+        return postulante.get();
+    }
+
+    public Postulante sumarVisita(Long id){
+        Postulante unPostulante = this.recuperar(id);
+        unPostulante.sumarVisita();
+        return this.postulanteDAO.save(unPostulante);
+
     }
 
     public Postulante editar(Postulante unPostulante) {
@@ -44,6 +52,7 @@ public class PostulanteService {
     public List<Postulante> recuperarTodo() {
         return postulanteDAO.findAll();
     }
+
     public Page<Postulante> recuperarSegunFiltro(Buscador unBuscador) {
         return this.postulanteDAO.findByLocalidadProvinciaAndOficio(
                 PageRequest.of(unBuscador.getIndex(),unBuscador.getSize()),
