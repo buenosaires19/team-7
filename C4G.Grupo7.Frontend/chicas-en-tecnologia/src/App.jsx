@@ -5,6 +5,7 @@ import SignUp from '../src/Components/SignUp-Component/SignUp';
 import Inicio from './Components/Inicio'
 import ListadoPostulantes from './Components/ListadoPostulantes/ListadoPostulantes'
 import Perfil from './Components/perfil/index.jsx'
+import Dashboard from './Components/Dashboard/index.jsx'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/postulante" render={proops => <SignUp {...proops} />} />
           <Route exact path="/postulados" render={proops => <ListadoPostulantes {...proops} />} />
           <Route exact path="/perfil/:id" render={proops => <Perfil {...proops}/>}/>
+          <Route exact path="/admin" render={proops => <Dashboard {...proops}/>}/>
       </Switch>
       
     </BrowserRouter>

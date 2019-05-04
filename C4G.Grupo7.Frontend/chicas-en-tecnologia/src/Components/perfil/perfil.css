@@ -3,12 +3,13 @@ img {
 }
 
 #profile {
-    background: #ffb700;
+    background:  rgb(99,0,168);
     padding: 25px 0;
 }
 
 ul, li {
     display: inline;
+    color: #fff;
 }
 
 ul {
@@ -27,7 +28,7 @@ li {
 p::before {
     margin-bottom: 20px;
     content: "";
-    border-bottom: 3px solid #ffb700;
+    border-bottom: 3px solid  rgb(99,0,168);
     width: 150px;
     display: block;
 
@@ -39,4 +40,9 @@ h3 {
 
 #video {
     width: 70%;
+}
+
+#her-name {
+    color: white;
+    font-size: 2em;
 }

@@ -8,8 +8,7 @@
 .background-abm{
     border-radius: 25px;
     padding: 10; 
-    /* width: 200px;
-    height: 150px; */
+
     background-color: rgb(166, 95, 216);
     background: linear-gradient(353deg, rgba(166, 95, 216) 0%, rgba(255,90,95,1) 100%);
     height: 70vh;

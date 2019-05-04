@@ -47,6 +47,14 @@ export default class perfil extends Component {
                             foto: postulante.foto,
                             visitas: postulante.visitas,
             })).catch();
+
+        API.post(`/postulante/${this.props.match.params.id}/evento/agregar`, {
+            pais: 'Argentina',
+            provincia: 'Buenos Aires',
+            localidad: 'Glew'
+        })
+
+        
     }
     render() {
         return (
@@ -56,12 +64,13 @@ export default class perfil extends Component {
                         <div className="col-md-2"></div>
                         <div className="col-md-8">
                             <img src={photo} alt="profile photo" className="rounded-circle" />
-                            <h2>{this.state.nombre}</h2>
+                            <h2 id="her-name">{this.state.nombre}</h2>
                             <ul>
                                 <li>{this.state.areaEspecializacion}</li>
                                 <li>{this.state.localidad.pais}</li>
                             </ul>
                         </div>
+                        <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Compartir</a></div>
                         <div className="col-md-2"></div>
                     </div>
                 </div>
