@@ -1,6 +1,4 @@
-package grupo7Backend.C4G.Grupo7.services;
-
-import grupo7Backend.C4G.Grupo7.utils.Oficio;
+package grupo7Backend.C4G.Grupo7.utils;
 
 public class Buscador {
 
