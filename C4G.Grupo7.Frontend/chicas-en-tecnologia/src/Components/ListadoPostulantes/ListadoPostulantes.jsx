@@ -9,7 +9,7 @@ class ListadoPostulantes extends React.Component {
     constructor() {
         super();
         this.state = {
-            postulantes: [1, 2,3,4],
+            postulantes: [],
         } 
 
     }
