@@ -1,8 +1,9 @@
 import React from 'react';
-import API from '../ApiComponent'
+import API from '../../API';
+import '../style.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-class Postulantes extends React.Component {
+class ListadoPostulantes extends React.Component {
 
     constructor() {
         super();
@@ -12,9 +13,9 @@ class Postulantes extends React.Component {
 
     }
 
-    componentDidMount(){
+    /*componentDidMount(){
         API.get("/postulantes").then(users => this.setState({usuarios: users})).catch(console.log("holis"));
-    }
+    }*/
 
 
     renderUsuarios() {
@@ -70,7 +71,6 @@ class Postulantes extends React.Component {
         return (
             <body>
                 <div>   
-                    {this.renderUsuarios()}
                     {this.renderButtons()}    
                 </div>
             </body>
@@ -81,4 +81,4 @@ class Postulantes extends React.Component {
 
 }
 
-export default Postulantes;
+export default ListadoPostulantes;

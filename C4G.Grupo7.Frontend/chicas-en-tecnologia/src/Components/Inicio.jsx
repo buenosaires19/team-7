@@ -3,6 +3,7 @@ import './style.css'
 import logo from '../logo-big.svg'
 import chica from '../Components/Pictures/chica.jpg'
 import API from '../API'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class inicio extends React.Component {
@@ -30,51 +31,51 @@ class inicio extends React.Component {
         API.get("/postulante/masvisitado").then(users => this.setState({usuarios: users})).catch(console.log("Fail"));
     }
 
-    renderUsuarios() {
-
-        return (
-            <div class="card">
-                {this.state.usuarios.map(usuario =>
-                    <div class="card-body" onClick={() =>
-                        this.setState({ usuarioSeleccionado: usuario })}
-                        style={{
-                            backgroundColor: this.state.usuarioSeleccionado.name
-                                && this.state.usuarioSeleccionado.name === usuario.name ? 'red' : 'beige',
-                            fontSize: '30px',
-                        }}
-                    >
-                        {usuario.name}
-
-                    </div>
-                )}
-            </div>
-        );
-    }
 
     goPostulante() {
         this.props.history.push('/postulante');
     }
 
-    /* goUser() {
-         this.props.history.push(`/user/${this.state.usuarioSeleccionado.id}`);
+     goListado() {
+         this.props.history.push(`/postulados`);
      }
- 
+     /*
      deleteUser() {
          API.delete(`/user/${this.state.usuarioSeleccionado.id}/delete`)
          .then(console.log(this.state)).catch(console.log("No pillo"))
      }
      */
+
+    renderCard(){
+        return(
+                <div className="container">
+                    <div className='row'>
+                        <div className='col-md-6'>
+                        <img class="imgRedondeada" src={chica} alt="Test"/>
+                        </div>
+                        <div className="col-md-6 padding6">
+                            <h5 class="card-title">Alejandra Rios</h5>
+                            <p class="card-text">"La vida es una y hay que vivirla. La biotecnologia me cambio la vida."</p>
+                            <p class="card-text">Bioquimica reconocida mundialmente</p>
+                        </div>
+                    </div>
+                </div>
+        )
+    }
     renderButtons() {
         return (
             <div id="full-screen" className="container-fluid">
                 <div className="container">
+
+
+                
                     <div className="row">
                         <img src={logo}  alt="chica en tecnologia"/> 
                     </div>
-                    <div className="row ">
-                    
+                    <div className="row">
                     <div id='fade' className="container text-center"> 
-                    <img src={chica} class="rounded achicarImg" alt="chica test"/> <h1>Maria elena</h1><h2>Psicologa</h2>
+
+                    {this.renderCard()}
                         
                     </div>
                     </div>
@@ -83,7 +84,7 @@ class inicio extends React.Component {
                             <button type="button" className="btn btn-outline-light" onClick={() => this.goPostulante()}> Postular </button>
                         </div>
                         <div className="col-md-6">
-                        <button type="button" class="btn btn-outline-light">Listas</button>
+                        <button type="button" class="btn btn-outline-light" onClick={() => this.goListado()}>Listas</button>
                         </div>
                     </div>
                 </div>

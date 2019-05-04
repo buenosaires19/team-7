@@ -11,13 +11,34 @@ h1{
     font-family: 'Work Sans' sans-serif;
 }
 
+.padding6 h5,p{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.imgRedondeada {
+    border-radius: 50%;
+  }
+
+.card{
+    width: 50%;
+    height: 70%;
+}
+.card-img{
+    width: 30%;
+    height: 70%;
+}
+
 .achicarImg{
     width: 30%;
     height: 70%;
 }
 
 
-#fade img,h1,h2 {
+#fade img,h1,h2,.card {
     margin-top: 25px;
     font-size: 21px;
     text-align: center;
