@@ -11,12 +11,20 @@ h1{
     font-family: 'Work Sans' sans-serif;
 }
 
+.borderShadow{
+    border: 3px rgb(92, 2, 47) outset;
+}
+
 .padding6 h5,p{
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
     vertical-align: middle;
     line-height: normal;
+}
+
+.col-md-6{
+    margin-bottom: 10px;
 }
 
 .imgRedondeada {
@@ -38,7 +46,7 @@ h1{
 }
 
 
-#fade img,h1,h2,.card {
+#fade img,h1,h2,h5,p {
     margin-top: 25px;
     font-size: 21px;
     text-align: center;

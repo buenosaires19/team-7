@@ -48,7 +48,7 @@ class inicio extends React.Component {
 
     renderCard(){
         return(
-                <div className="container">
+                <div className="container borderShadow">
                     <div className='row'>
                         <div className='col-md-6'>
                         <img class="imgRedondeada" src={chica} alt="Test"/>
