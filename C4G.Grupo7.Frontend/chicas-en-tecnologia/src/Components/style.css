@@ -14,20 +14,20 @@ h1{
 .borderShadow{
     border: 3px rgb(92, 2, 47) outset;
 }
-
+/* 
 .padding6 h5,p{
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
     vertical-align: middle;
     line-height: normal;
-}
+} */
 
-.col-md-6{
+/* .col-md-6{
     margin-bottom: 10px;
-}
+} */
 
-.imgRedondeada {
+/* .imgRedondeada {
     border-radius: 50%;
   }
 
@@ -43,8 +43,16 @@ h1{
 .achicarImg{
     width: 30%;
     height: 70%;
+} */
+
+.card-custom {
+    background-color: rgba(0,0,0,0);
 }
 
+.card-text > p::before, p::after {
+    content: none;
+    width: 0px;
+}
 
 #fade img,h1,h2,h5,p {
     margin-top: 25px;
