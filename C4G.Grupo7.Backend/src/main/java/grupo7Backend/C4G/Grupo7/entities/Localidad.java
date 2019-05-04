@@ -49,4 +49,5 @@ public class Localidad {
     public String getLocalidad() {
         return localidad;
     }
+
 }

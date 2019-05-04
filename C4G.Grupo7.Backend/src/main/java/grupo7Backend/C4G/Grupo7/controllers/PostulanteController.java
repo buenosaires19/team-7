@@ -20,6 +20,11 @@ public class PostulanteController {
         this.postulanteService = postulanteService;
     }
 
+    @GetMapping("/postulante/{id}/ver")
+    public Postulante ver(@PathVariable("id") Long id){
+        return this.postulanteService.recuperar(id);
+    }
+
     @PutMapping("/postulante/crear")
     public Postulante crear(@RequestBody @Valid Postulante unPostulante){
         return postulanteService.crear(unPostulante);
@@ -29,4 +34,5 @@ public class PostulanteController {
     public Postulante editar(@RequestBody @Valid Postulante unPostulante){
         return postulanteService.editar(unPostulante);
     }
+
 }

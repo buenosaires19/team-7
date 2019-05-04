@@ -15,7 +15,7 @@ public class Postulante {
 
     private String nombre;
     private String apellido;
-    private LocalDate fechaNaciemiento;
+    private LocalDate fechaNacimiento;
     private Oficio oficio;
     private String descripcion;
     @ManyToOne(cascade = CascadeType.ALL)
@@ -23,19 +23,21 @@ public class Postulante {
     private String contenido;
     private String foto;
     private String areaEspecializacion;
+    private int visitas;
 
     public Postulante(String nombre, String apellido, LocalDate fechaNaciemiento, Oficio oficio,
                       String descripcion, Localidad localidad, String contenido, String foto,
                       String areaEspecializacion) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.fechaNaciemiento = fechaNaciemiento;
+        this.fechaNacimiento = fechaNaciemiento;
         this.oficio = oficio;
         this.descripcion = descripcion;
         this.localidad = localidad;
         this.contenido = contenido;
         this.foto = foto;
         this.areaEspecializacion = areaEspecializacion;
+        this.visitas = 0;
     }
 
     public Postulante() {
@@ -57,12 +59,12 @@ public class Postulante {
         this.apellido = apellido;
     }
 
-    public LocalDate getFechaNaciemiento() {
-        return fechaNaciemiento;
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFechaNaciemiento(LocalDate fechaNaciemiento) {
-        this.fechaNaciemiento = fechaNaciemiento;
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public Oficio getOficio() {
@@ -120,4 +122,17 @@ public class Postulante {
     public void setId(Long id){
         this.id = id;
     }
+
+    public int getVisitas() {
+        return visitas;
+    }
+
+    public void setVisitas(int visitas) {
+        this.visitas = visitas;
+    }
+
+    public void sumarVisita() {
+        this.visitas += 1;
+    }
+
 }

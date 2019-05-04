@@ -27,11 +27,14 @@ public class PostulanteService {
         if(!postulante.isPresent()){
             throw new RuntimeException("No existe postulante");
         }
-        return postulante.get();
+        Postulante postulanteNuevo = postulante.get();
+        postulanteNuevo.sumarVisita();
+        return postulanteNuevo;
     }
 
     public Postulante editar(Postulante unPostulante) {
         this.recuperar(unPostulante.getId());
         return this.postulanteDAO.save(unPostulante);
     }
+
 }
