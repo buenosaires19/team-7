@@ -55,7 +55,7 @@ class inicio extends React.Component {
                     <div className="row">
                     
                     <div className="container text-center"> 
-                    <img src={chica} class="rounded" alt="chica test"/> aosjdoiasdoiasjdasoidajsodajsdiasdoiajsdoi
+                    <img src={chica} class="rounded" alt="chica test"/> <h1>Maria elena</h1>
                         
                         </div>
                     </div>
