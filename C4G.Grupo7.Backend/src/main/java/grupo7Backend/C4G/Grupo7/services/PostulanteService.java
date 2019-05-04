@@ -84,30 +84,41 @@ public class PostulanteService {
 
         Localidad localidadSanJuan = new Localidad("Argentina","San Juan","La grande");
 
+        Evento eventoBsAs = new Evento("Argentina","Bs As","Glew");
 
 
         Postulante postulanteProgramadora = new Postulante("Rosalia","Paz", LocalDate.now(), Oficio.CIENTIFICA, "Hija de doctor house",
                 localidadBuenoAires,"www.google.com","", "Ofmalmologa");
+        postulanteProgramadora.addEvento(eventoBsAs);
+        postulanteProgramadora.addEvento(new Evento("Argentina","Bs As","Glew"));
+        postulanteProgramadora.addEvento(new Evento("Argentina","Santa Fe","Rosario"));
+        postulanteProgramadora.addEvento(new Evento("Argentina","Bs As","Glew"));
 
         Postulante postulanteDoctora = new Postulante("Silvia","Kochen", LocalDate.now(), Oficio.DOCTORA, "Hija de doctor house",
                 localidadCordoba,"www.google.com","", "Ofmalmologa");
+        postulanteDoctora.addEvento(new Evento("Argentina","Cordoba","Cordoba"));
+        postulanteDoctora.addEvento(new Evento("Argentina","Santa Fe","Santa Fe"));
+        postulanteDoctora.addEvento(new Evento("Argentina","Bs As","Lomas Zamora"));
 
         Postulante postulanteSanJuan = new Postulante("Aixa","Rodríguez", LocalDate.now(), Oficio.DOCTORA, "La Geologia...",
                 localidadSanJuan,"www.google.com","", "Geologia");
+        postulanteSanJuan.addEvento(new Evento("Argentina","Mendoza","Magnetica"));
+        postulanteSanJuan.addEvento(new Evento("Argentina","Mendoza","Magnetica"));
+
 
         Postulante postulanteSanJuanOther = new Postulante("Yesica","López", LocalDate.now(), Oficio.CIENTIFICA, "Trabajo en el Laboratorio ",
                 localidadSanJuan,"www.google.com","", "CIENCIAS BIOLÓGICAS");
-
+        postulanteSanJuanOther.addEvento(new Evento("Argentina","Bs As","Glew"));
         Postulante postulanteBuenosAires = new Postulante("Verónica","Lassalle", LocalDate.now(), Oficio.NANOTECNOLOGA, "La investigación que ",
                 localidadSanJuan,"www.google.com","", "NANOTECNOLOGÍA MAGNÉTICA");
 
 
         postulanteDAO.save(
-                postulanteDoctora
+                postulanteProgramadora
 			);
 
         postulanteDAO.save(
-                postulanteProgramadora
+                postulanteDoctora
         );
         postulanteDAO.save(
                 postulanteSanJuan
