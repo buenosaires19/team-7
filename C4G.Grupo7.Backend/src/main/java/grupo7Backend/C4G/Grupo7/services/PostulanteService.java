@@ -1,5 +1,6 @@
 package grupo7Backend.C4G.Grupo7.services;
 
+import grupo7Backend.C4G.Grupo7.entities.Evento;
 import grupo7Backend.C4G.Grupo7.entities.Postulante;
 import grupo7Backend.C4G.Grupo7.repositories.PostulanteDAO;
 import grupo7Backend.C4G.Grupo7.utils.Buscador;
@@ -37,13 +38,6 @@ public class PostulanteService {
         return postulante.get();
     }
 
-    public Postulante sumarVisita(Long id){
-        Postulante unPostulante = this.recuperar(id);
-        unPostulante.sumarVisita();
-        return this.postulanteDAO.save(unPostulante);
-
-    }
-
     public Postulante editar(Postulante unPostulante) {
         this.recuperar(unPostulante.getId());
         return this.postulanteDAO.save(unPostulante);
@@ -65,5 +59,16 @@ public class PostulanteService {
 
     public Postulante masVisitado() {
         return this.postulanteDAO.masVisitado();
+    }
+
+    public Postulante add(Long id, Evento unEvento) {
+        Postulante unPostulante = this.recuperar(id);
+        unPostulante.incrementarVisita();
+        unPostulante.addEvento(unEvento);
+
+
+        return this.postulanteDAO.save(unPostulante);
+
+
     }
 }

@@ -6,8 +6,12 @@ import grupo7Backend.C4G.Grupo7.utils.Oficio;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Postulante {
 
 
@@ -26,6 +30,9 @@ public class Postulante {
     private String foto;
     private String areaEspecializacion;
     private int visitas;
+
+    @OneToMany(fetch= FetchType.EAGER,cascade = CascadeType.ALL)
+    private List<Evento> eventos;
 
     public Postulante(String nombre, String apellido, LocalDate fechaNaciemiento, Oficio oficio,
                       String descripcion, Localidad localidad, String contenido, String foto,
@@ -133,8 +140,17 @@ public class Postulante {
         this.visitas = visitas;
     }
 
-    public void sumarVisita() {
+    public void incrementarVisita() {
         this.visitas += 1;
+    }
+
+    public List<Evento> getEventos() {
+        return eventos;
+    }
+
+    public void addEvento(Evento unEvento){
+        this.eventos.add(unEvento);
+        unEvento.setPostulante(this);
     }
 
 }

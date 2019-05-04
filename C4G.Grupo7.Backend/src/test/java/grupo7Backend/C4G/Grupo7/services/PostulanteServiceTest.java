@@ -1,5 +1,6 @@
 package grupo7Backend.C4G.Grupo7.services;
 
+import grupo7Backend.C4G.Grupo7.entities.Evento;
 import grupo7Backend.C4G.Grupo7.entities.Localidad;
 import grupo7Backend.C4G.Grupo7.entities.Postulante;
 import grupo7Backend.C4G.Grupo7.repositories.PostulanteDAO;
@@ -120,6 +121,24 @@ public class PostulanteServiceTest {
         this.postulanteService.crear(otherPostulante);
         Postulante postulanteMasVisitado = this.postulanteService.masVisitado();
         assertEquals("Juana", postulanteMasVisitado.getNombre());
+
+    }
+
+    @Test
+    public void despuesDeAgregarUnEventoAUnPostulanteEsteTiene1Evento() {
+        Localidad localidad = new Localidad();
+        Postulante postulante = new Postulante("Fernanda","Lopez", LocalDate.now(), Oficio.DOCTORA, "Hija de doctor house",
+                localidad,"www.google.com","", "Ofmalmologa");
+        this.postulanteService.crear(postulante);
+
+        Evento unEvento = new Evento("Argentina","Bs As","Glew");
+        postulanteService.add(postulante.getId(),unEvento);
+
+        Postulante unPostulante = postulanteService.recuperar(postulante.getId());
+
+
+        assertEquals(1,unPostulante.getVisitas());
+        assertEquals(1,unPostulante.getEventos().size());
 
     }
 
