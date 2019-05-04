@@ -1,0 +1,16 @@
+
+
+.body-color{
+    background-color: rgb(99,0,168);
+    background: linear-gradient(353deg, rgba(99,0,168,1) 0%, rgba(255,90,95,1) 100%);
+    height: 100vh;
+}
+
+.displayFlex {
+    display: flex;
+}
+
+.spaceBetween {
+    justify-content: center;
+    
+}
