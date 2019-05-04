@@ -1,21 +1,5 @@
-.Button-flex{
-    
-    justify-content: space-between;
-    display: flex;
-    
-}
-
-.card-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.App-Columns {
-    display: flex; 
-}
-
-
-body .colorBody {
-    background-color: rgb(23, 23, 80);
+#full-screen {
+    background: rgb(99,0,168);
+    background: linear-gradient(353deg, rgba(99,0,168,1) 0%, rgba(255,90,95,1) 100%);
+    height: 100vh;
 }
