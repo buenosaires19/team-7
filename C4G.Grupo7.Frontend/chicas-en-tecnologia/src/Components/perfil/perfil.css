@@ -32,3 +32,11 @@ p::before {
     display: block;
 
 }
+
+h3 {
+    margin-top: 20px;
+}
+
+#video {
+    width: 70%;
+}

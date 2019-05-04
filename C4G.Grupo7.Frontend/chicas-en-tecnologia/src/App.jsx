@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import SignUp from '../src/Components/SignUp-Component/SignUp';
 import Inicio from './Components/Inicio'
 import ListadoPostulantes from './Components/ListadoPostulantes/ListadoPostulantes'
+import Perfil from './Components/perfil/index.jsx'
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <Route exact path="/" render={proops => <Inicio {...proops} />} />
           <Route exact path="/postulante" render={proops => <SignUp {...proops} />} />
           <Route exact path="/postulados" render={proops => <ListadoPostulantes {...proops} />} />
+          <Route exact path="/perfil" render={proops => <Perfil {...proops}/>}/>
       </Switch>
     </BrowserRouter>
   );
