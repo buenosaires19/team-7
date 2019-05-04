@@ -5,6 +5,8 @@ import grupo7Backend.C4G.Grupo7.repositories.PostulanteDAO;
 import grupo7Backend.C4G.Grupo7.utils.Oficio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -45,5 +47,9 @@ public class PostulanteService {
 
     public List<Postulante> recuperarSegunFiltro(String provincia, Oficio oficio) {
         return this.postulanteDAO.findByLocalidadProvinciaAndOficio(provincia, oficio);
+    }
+
+    public Postulante masVisitado() {
+        return this.postulanteDAO.masVisitado();
     }
 }

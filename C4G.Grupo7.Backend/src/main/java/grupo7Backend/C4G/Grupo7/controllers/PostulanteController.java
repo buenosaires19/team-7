@@ -41,4 +41,8 @@ public class PostulanteController {
         return postulanteService.editar(unPostulante);
     }
 
+    @GetMapping("postulante/masVisitado")
+    public Postulante masVisto(){
+        return postulanteService.masVisitado();
+    }
 }

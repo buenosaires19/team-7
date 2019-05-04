@@ -72,4 +72,24 @@ public class PostulanteServiceTest {
         assertEquals(aPostulante.getOficio(),postulantesDeBuenosAiresProgramadores.get(0).getOficio());
 
     }
+
+    @Test
+    public void seRecuperaAlPostulanteMasVisitado(){
+        Localidad localidad = new Localidad("Argentina","Buenos Aires", "Merlo");
+
+        Postulante aPostulante = new Postulante("Florencia","Lopez", LocalDate.now(), Oficio.PROGRAMADORA, "Hija de doctor house",
+                localidad,"www.google.com","", "Ofmalmologa");
+        aPostulante.setVisitas(10);
+
+        Localidad otherLocalidad = new Localidad();
+        Postulante otherPostulante = new Postulante("Juana","Juanez", LocalDate.now(), Oficio.PROGRAMADORA, "Hija de doctor house",
+                otherLocalidad,"www.google.com","", "Ofmalmologa");
+        otherPostulante.setVisitas(20);
+
+        this.postulanteService.crear(aPostulante);
+        this.postulanteService.crear(otherPostulante);
+        Postulante postulanteMasVisitado = this.postulanteService.masVisitado();
+        assertEquals("Juana", postulanteMasVisitado.getNombre());
+
+    }
 }
