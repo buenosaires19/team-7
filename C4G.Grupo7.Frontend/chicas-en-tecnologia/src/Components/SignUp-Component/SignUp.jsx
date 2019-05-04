@@ -11,18 +11,21 @@ class SignUp extends React.Component {
     constructor() {
         super();
         this.state = {
-            nombre: "",
-            apellido: "",
-            fechaNacimiento: "",
-            descripcion: "",
-            localidad: {
-                pais: "",
-                provincia: "",
-                localidad: "",  
-            },
-            contenido: "",
-            foto: "",
-            areaEspecializacion: "",
+            
+                nombre: "Test",
+                apellido: "sdfgsf",
+                fechaNacimiento: "2019-05-04",
+                oficio: "CIENTIFICA",
+                descripcion: "Hija de doctor house",
+                localidad: {
+                    pais: "Argentina",
+                    provincia: "Buenos Aires",
+                    localidad: "Merlo"
+                },
+                contenido: "www.google.com",
+                foto: "https://proyectos.chicasentecnologia.org/mujeresensteam/assets/images/rosalia-paz.jpg",
+                areaEspecializacion: "Ofmalmologa",
+            
         }
     } 
 
@@ -60,7 +63,7 @@ class SignUp extends React.Component {
     }
 
     setOficio(event) {
-        this.setState({nombre: event.target.value})
+        this.setState({oficio: event.target.value})
     }
 
     setDescripcion(event) {
@@ -68,7 +71,12 @@ class SignUp extends React.Component {
     }
 
     setLocalidad(event) {
-        this.setState({localidad: event.target.value})
+        console.log(event.target.value);
+        
+        const x = {pais: "Argentina",
+        provincia: event.target.value,
+        localidad: "Merlo"}
+        this.setState({localidad: x})
     }
 
     setFoto(event) {
